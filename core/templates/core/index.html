@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Hub · no script</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #0a0a0a;
+            color: #00ffcc;
+            font-family: 'Courier New', monospace;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        
+        .container {
+            max-width: 700px;
+            text-align: center;
+            padding: 2rem;
+            border: 1px solid #00ffcc33;
+            border-radius: 8px;
+            background: #0a0a0a;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            letter-spacing: -2px;
+        }
+        
+        .tagline {
+            font-size: 0.9rem;
+            color: #00ffcc99;
+            margin-bottom: 2rem;
+            border-top: 1px solid #00ffcc33;
+            border-bottom: 1px solid #00ffcc33;
+            padding: 0.5rem;
+        }
+        
+        .rules {
+            text-align: left;
+            margin: 2rem 0;
+            padding: 1rem;
+            background: #00ffcc0d;
+            border-left: 3px solid #00ffcc;
+        }
+        
+        .rules p {
+            margin: 0.5rem 0;
+            font-size: 0.85rem;
+        }
+        
+        button {
+            background: #00ffcc;
+            color: #0a0a0a;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            font-family: monospace;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+        
+        button:hover {
+            background: #ffffff;
+            transform: scale(1.02);
+        }
+        
+        .user-id {
+            margin-top: 1.5rem;
+            font-size: 0.7rem;
+            color: #00ffcc66;
+        }
+        
+        footer {
+            margin-top: 2rem;
+            font-size: 0.7rem;
+            color: #00ffcc44;
+        }
+        
+        a {
+            color: #00ffcc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>// no script</h1>
+        <div class="tagline">
+            no job talk · no marriage talk · no "where is this going?"
+        </div>
+        
+        <div class="rules">
+            <p>✨ here, you can:</p>
+            <p>• exist with a stranger · no expectations</p>
+            <p>• code · watch documentaries · share crazy ideas</p>
+            <p>• sit in silence · be weird · be real</p>
+            <p>• leave anytime · no follow-up · no pressure</p>
+            <br>
+            <p>⚠️ not allowed: creepy · demanding · expecting anything</p>
+            <p>💡 allowed: being human · being curious · being free</p>
+        </div>
+        
+        <button id="findBtn">→ find someone to exist with ←</button>
+        
+        <div class="user-id">
+            your id: <span id="userId">{{ user_id }}</span>
+        </div>
+        
+        <footer>
+            two strangers · one room · no script
+        </footer>
+    </div>
+    
+    <script>
+        document.getElementById('findBtn').addEventListener('click', () => {
+            window.location.href = '/start/';
+        });
+    </script>
+</body>
+</html>

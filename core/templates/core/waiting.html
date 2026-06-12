@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>waiting...</title>
+    <style>
+        body {
+            background: #0a0a0a;
+            color: #00ffcc;
+            font-family: monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container { text-align: center; }
+        .dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #00ffcc;
+            margin: 0 4px;
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+        .dot:nth-child(1) { animation-delay: -0.32s; }
+        .dot:nth-child(2) { animation-delay: -0.16s; }
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>looking for another free human</h2>
+        <div>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+        <p style="margin-top: 2rem;">no one else is here yet. be the first. wait or come back later.</p>
+        <a href="/" style="color: #00ffcc;">← go back</a>
+    </div>
+    <script>
+        // Auto-refresh every 3 seconds to check for match
+        setInterval(() => {
+            fetch('/check_match/')
+                .then(r => r.json())
+                .then(data => {
+                    if (data.room_id) {
+                        window.location.href = `/room/${data.room_id}/`;
+                    }
+                });
+        }, 3000);
+    </script>
+</body>
+</html>

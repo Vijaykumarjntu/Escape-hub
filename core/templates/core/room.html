@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>in session - {{ room.room_id }}</title>
+    <style>
+        body {
+            background: #0a0a0a;
+            color: #00ffcc;
+            font-family: monospace;
+            margin: 0;
+            padding: 2rem;
+        }
+        #messages {
+            height: 70vh;
+            overflow-y: scroll;
+            border: 1px solid #00ffcc33;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        .message {
+            margin: 0.5rem 0;
+        }
+        .my-message { color: #ffffff; }
+        .their-message { color: #00ffcc; }
+        input, button {
+            background: #1a1a1a;
+            border: 1px solid #00ffcc;
+            color: #00ffcc;
+            padding: 0.5rem;
+            font-family: monospace;
+        }
+        input { width: 70%; }
+        button { cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h2>// you're with a stranger</h2>
+    <p>no expectations. no script. just exist.</p>
+    
+    <div id="messages"></div>
+    
+    <input type="text" id="messageInput" placeholder="type anything... or nothing">
+    <button id="sendBtn">send</button>
+    <br><br>
+    <button id="leaveBtn" style="background:#ff4444;">leave session</button>
+    
+    <script>
+        const roomId = '{{ room.room_id }}';
+        const ws = new WebSocket(`ws://localhost:8000/ws/chat/${roomId}/`);
+        const messagesDiv = document.getElementById('messages');
+        const input = document.getElementById('messageInput');
+        const sendBtn = document.getElementById('sendBtn');
+        
+        ws.onmessage = (e) => {
+            const data = JSON.parse(e.data);
+            const msgDiv = document.createElement('div');
+            msgDiv.className = 'message ' + (data.user === '{{ request.user.username }}' ? 'my-message' : 'their-message');
+            msgDiv.textContent = `${data.user}: ${data.message}`;
+            messagesDiv.appendChild(msgDiv);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        };
+        
+        sendBtn.onclick = () => {
+            if(input.value) {
+                ws.send(JSON.stringify({message: input.value}));
+                input.value = '';
+            }
+        };
+        
+        document.getElementById('leaveBtn').onclick = () => {
+            window.location.href = '/';
+        };
+    </script>
+</body>
+</html>
