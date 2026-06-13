@@ -46,6 +46,55 @@
             padding: 0.5rem;
         }
         
+        /* GitHub Login Button */
+        .github-login {
+            margin: 2rem 0;
+        }
+        
+        .github-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: #24292e;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            border: 1px solid #ffffff33;
+        }
+        
+        .github-btn:hover {
+            background: #3a3f44;
+            transform: scale(1.02);
+        }
+        
+        .or-divider {
+            text-align: center;
+            margin: 1.5rem 0;
+            color: #00ffcc66;
+            font-size: 0.8rem;
+        }
+        
+        .anonymous-btn {
+            background: transparent;
+            border: 2px solid #00ffcc;
+            color: #00ffcc;
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            cursor: pointer;
+            font-family: monospace;
+            font-weight: bold;
+            margin-top: 0.5rem;
+        }
+        
+        .anonymous-btn:hover {
+            background: #00ffcc;
+            color: #0a0a0a;
+        }
+        
         .rules {
             text-align: left;
             margin: 2rem 0;
@@ -59,24 +108,6 @@
             font-size: 0.85rem;
         }
         
-        button {
-            background: #00ffcc;
-            color: #0a0a0a;
-            border: none;
-            padding: 1rem 2rem;
-            font-size: 1.2rem;
-            font-family: monospace;
-            font-weight: bold;
-            cursor: pointer;
-            border-radius: 4px;
-            transition: all 0.3s;
-        }
-        
-        button:hover {
-            background: #ffffff;
-            transform: scale(1.02);
-        }
-        
         .user-id {
             margin-top: 1.5rem;
             font-size: 0.7rem;
@@ -88,10 +119,6 @@
             font-size: 0.7rem;
             color: #00ffcc44;
         }
-        
-        a {
-            color: #00ffcc;
-        }
     </style>
 </head>
 <body>
@@ -100,6 +127,22 @@
         <div class="tagline">
             no job talk · no marriage talk · no "where is this going?"
         </div>
+        
+        <!-- GITHUB LOGIN BUTTON -->
+        <div class="github-login">
+            <a href="/accounts/github/login/" class="github-btn">
+                <span>🐙</span> login with GitHub
+            </a>
+            <p style="font-size: 0.7rem; margin-top: 0.5rem; color: #00ffcc66;">
+                one weird repo = entry
+            </p>
+        </div>
+        
+        <div class="or-divider">——— or continue anonymously ———</div>
+        
+        <button class="anonymous-btn" onclick="window.location.href='/anonymous/'">
+            👻 just browse (no account)
+        </button>
         
         <div class="rules">
             <p>✨ here, you can:</p>
@@ -112,21 +155,9 @@
             <p>💡 allowed: being human · being curious · being free</p>
         </div>
         
-        <button id="findBtn">→ find someone to exist with ←</button>
-        
-        <div class="user-id">
-            your id: <span id="userId">{{ user_id }}</span>
-        </div>
-        
         <footer>
             two strangers · one room · no script
         </footer>
     </div>
-    
-    <script>
-        document.getElementById('findBtn').addEventListener('click', () => {
-            window.location.href = '/start/';
-        });
-    </script>
 </body>
 </html>

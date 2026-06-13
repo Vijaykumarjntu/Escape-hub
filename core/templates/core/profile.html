@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>your real self · the hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #0a0a0a;
+            color: #00ffcc;
+            font-family: 'Courier New', monospace;
+            padding: 2rem;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            color: #00ffcc99;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #00ffcc33;
+            padding-bottom: 1rem;
+        }
+        
+        .warning {
+            background: #ff44441a;
+            border-left: 3px solid #ff4444;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            font-size: 0.8rem;
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        label {
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        textarea {
+            background: #1a1a1a;
+            border: 1px solid #00ffcc;
+            color: #00ffcc;
+            padding: 0.8rem;
+            font-family: monospace;
+            font-size: 0.9rem;
+            resize: vertical;
+        }
+        
+        textarea:focus {
+            outline: none;
+            border-color: #ffffff;
+        }
+        
+        button {
+            background: #00ffcc;
+            color: #0a0a0a;
+            border: none;
+            padding: 1rem;
+            font-size: 1.1rem;
+            font-family: monospace;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+        
+        button:hover {
+            background: #ffffff;
+        }
+        
+        .skip {
+            text-align: center;
+            margin-top: 1rem;
+        }
+        
+        .skip a {
+            color: #00ffcc66;
+            text-decoration: none;
+            font-size: 0.8rem;
+        }
+        
+        .skip a:hover {
+            color: #00ffcc;
+        }
+        
+        .completion-badge {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            background: #00ffcc1a;
+            padding: 0.5rem;
+            font-size: 0.7rem;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="completion-badge">
+            {% if is_complete %}✓ profile complete{% else %}⚠️ incomplete{% endif %}
+        </div>
+        
+        <h1>// expose your real self</h1>
+        <div class="subtitle">
+            github got you in. now forget it.<br>
+            here, no one cares about your code.
+        </div>
+        
+        <div class="warning">
+            ⚠️ this is not a job application. no one will judge you.<br>
+            be honest. be weird. be real. this is how you find your tribe.
+        </div>
+        
+        <form method="post">
+            {% csrf_token %}
+            
+            {% for field in form %}
+            <div class="field">
+                <label>{{ field.label }}</label>
+                {{ field }}
+                {% if field.help_text %}
+                    <small style="color: #00ffcc66; font-size: 0.7rem;">{{ field.help_text }}</small>
+                {% endif %}
+            </div>
+            {% endfor %}
+            
+            <button type="submit">→ save my real self →</button>
+        </form>
+        
+        <div class="skip">
+            <a href="/dashboard/">skip for now (but you'll miss matching)</a>
+        </div>
+    </div>
+</body>
+</html>

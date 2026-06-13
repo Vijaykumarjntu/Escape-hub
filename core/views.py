@@ -148,3 +148,71 @@ def websocket_endpoint(request, room_id):
     # For now, just return 404 if someone tries to GET it
     from django.http import Http404
     raise Http404("WebSocket endpoint")
+
+
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from .models import UserProfile
+from .forms import RealSelfForm
+
+@login_required
+def profile_view(request):
+    profile, created = UserProfile.objects.get_or_create(user=request.user)
+    
+    if request.method == 'POST':
+        form = RealSelfForm(request.POST, instance=profile)
+        if form.is_valid():
+            form.save()
+            return redirect('/dashboard/')  # After profile, go to dashboard
+    else:
+        form = RealSelfForm(instance=profile)
+    
+    return render(request, 'core/profile.html', {
+        'form': form,
+        'profile': profile,
+        'is_complete': profile.is_complete()
+    })
+
+
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from django.db import models  # ← ADD THIS LINE
+from .models import UserProfile, Room, WaitingUser
+
+@login_required
+def dashboard(request):
+    # Get or create user profile
+    profile, created = UserProfile.objects.get_or_create(user=request.user)
+    
+    # Get recent rooms (past matches)
+    recent_rooms = Room.objects.filter(
+        models.Q(user1_session=request.user.username) | 
+        models.Q(user2_session=request.user.username)
+    ).order_by('-created_at')[:5]
+    
+    # Check if they're currently waiting
+    is_waiting = WaitingUser.objects.filter(session_id=request.user.username).exists()
+    
+    # Get total matches count
+    matches_count = Room.objects.filter(
+        models.Q(user1_session=request.user.username) | 
+        models.Q(user2_session=request.user.username)
+    ).count()
+    
+    context = {
+        'user': request.user,
+        'profile': profile,
+        'recent_rooms': recent_rooms,
+        'is_waiting': is_waiting,
+        'matches_count': matches_count,
+        'profile_complete': profile.is_complete() if hasattr(profile, 'is_complete') else False,
+    }
+    
+    return render(request, 'core/dashboard.html', context)
+
+
+@login_required
+def public_pages(request):
+    return render(request, 'core/public_pages.html', {
+        'user': request.user
+    })
