@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>the depths · the hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #0a0a0a;
+            color: #00ffcc;
+            font-family: 'Courier New', monospace;
+            padding: 2rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #00ffcc33;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        h1 {
+            font-size: 1.8rem;
+        }
+        
+        .subhead {
+            color: #00ffcc99;
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+        }
+        
+        .back-link {
+            color: #00ffcc;
+            text-decoration: none;
+        }
+        
+        .manifesto {
+            background: #00ffcc0d;
+            border-left: 3px solid #00ffcc;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        .pages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .page-card {
+            background: #00ffcc0d;
+            border: 1px solid #00ffcc33;
+            border-radius: 8px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .page-card:hover {
+            background: #00ffcc1a;
+            transform: translateY(-2px);
+            border-color: #00ffcc;
+        }
+        
+        .page-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .page-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .page-description {
+            font-size: 0.8rem;
+            color: #00ffcc99;
+            line-height: 1.4;
+            margin-bottom: 0.8rem;
+        }
+        
+        .page-depth {
+            font-size: 0.7rem;
+            color: #ffcc00aa;
+            font-style: italic;
+        }
+        
+        .footer {
+            margin-top: 3rem;
+            text-align: center;
+            font-size: 0.7rem;
+            color: #00ffcc44;
+            border-top: 1px solid #00ffcc33;
+            padding-top: 1.5rem;
+        }
+        
+        .coming-badge {
+            display: inline-block;
+            background: #ffcc001a;
+            color: #ffcc00;
+            font-size: 0.6rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div>
+                <h1>// the depths</h1>
+                <div class="subhead">places where your inner self can breathe</div>
+            </div>
+            <a href="/dashboard/" class="back-link">← back to dashboard</a>
+        </div>
+        
+        <div class="manifesto">
+            <p>✨ you've spent your whole life hiding parts of yourself.</p>
+            <p>✨ laughing at jokes you didn't find funny.</p>
+            <p>✨ staying quiet when you had something to say.</p>
+            <p>✨ pretending to be "normal" so they wouldn't ask questions.</p>
+            <br>
+            <p><strong>here, you don't have to hide.</strong></p>
+            <p>each page is a doorway into a part of you that society has no room for.</p>
+            <p>find the ones that hurt. find the ones that sing. find your people.</p>
+        </div>
+        
+        <div class="pages-grid">
+            <div class="page-card">
+                <div class="page-icon">🎭</div>
+                <div class="page-title">the masked self</div>
+                <div class="page-description">"I perform 'normal' so well that no one suspects anything. but inside, I'm exhausted."</div>
+                <div class="page-depth">the weight of pretending · the fear of being seen · the relief of dropping the mask</div>
+                <div class="coming-badge">coming soon</div>
+            </div>
+            
+            <div class="page-card">
+                <div class="page-icon">🌌</div>
+                <div class="page-title">the inner universe</div>
+                <div class="page-description">"My inner world is richer than anything outside. But no one asks to see it."</div>
+                <div class="page-depth">loud thoughts · quiet days · conversations with yourself · imaginary worlds</div>
+                <div class="coming-badge">coming soon</div>
+            </div>
+            
+            <div class="page-card">
+                <div class="page-icon">🔇</div>
+                <div class="page-title">the silenced voice</div>
+                <div class="page-description">"I have so much to say. But every time I open my mouth, nothing comes out."</div>
+                <div class="page-depth">social anxiety · fear of judgment · words trapped inside · the loneliness of silence</div>
+                <div class="coming-badge">coming soon</div>
+            </div>
+            
+            <div class="page-card">
+                <div class="page-icon">📜</div>
+                <div class="page-title">the unwritten story</div>
+                <div class="page-description">"I'm supposed to want certain things. I don't. And I don't know how to say that."</div>
+                <div class="page-depth">rejecting the script · owning your own path · saying 'no' to default life</div>
+                <div class="coming-badge">coming soon</div>
+            </div>
+            
+            <div class="page-card">
+                <div class="page-icon">🌙</div>
+                <div class="page-title">the 3am mind</div>
+                <div class="page-description">"My brain doesn't shut up. Especially when everyone else is asleep."</div>
+                <div class="page-depth">overthinking · existential spirals · late night clarity · the loneliness of being awake</div>
+                <div class="coming-badge">coming soon</div>
+            </div>
+            
+            <div class="page-card">
+                <div class="page-icon">🔧</div>
+                <div class="page-title">the builder</div>
+                <div class="page-description">"I make things no one asked for. Useless things. Beautiful things. *My* things."</div>
+                <div class="page-depth">projects without purpose · creation as breathing · code as confession</div>
+                <div class="coming-badge">coming soon</div>
+            </div>
+            
+            <div class="page-card">
+                <div class="page-icon">💔</div>
+                <div class="page-title">the misunderstood</div>
+                <div class="page-description">"They think they know me. They don't. Not even close."</div>
+                <div class="page-depth">being seen wrong · explaining yourself endlessly · the exhaustion of 'you don't get it'</div>
+                <div class="coming-badge">coming soon</div>
+            </div>
+            
+            <div class="page-card">
+                <div class="page-icon">🌀</div>
+                <div class="page-title">the different one</div>
+                <div class="page-description">"I've always felt different. Not better. Not worse. Just... not like them."</div>
+                <div class="page-depth">neurodivergence · feeling alien · not fitting any box · finding your kind of normal</div>
+                <div class="coming-badge">coming soon</div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>each page is a mirror. look inside. find the parts of you that have been waiting to be seen.</p>
+            <p style="margin-top: 0.5rem;">suggest a depth → because every hidden self deserves a home</p>
+        </div>
+    </div>
+</body>
+</html>
